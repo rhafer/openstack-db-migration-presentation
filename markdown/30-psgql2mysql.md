@@ -50,7 +50,23 @@ https://github.com/SUSE/psql2mysql
 
 
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
-# Converting into a module, releasing onto pypi, fun and games with pbr
+# Converting into a module
+
+* A proof of concept script is great, but doesn't scale.
+
+* Requires hacks like importlib
+
+
+<!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
+# Releasing onto pypi
+
+* pypi is ... opinionated.
+
+
+<!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
+# Fun and games with pbr
+
+* pbr is even more opinionated!
 
 
 <!-- .slide: data-state="section-break" id="p2m-demo" data-timing="20s" -->

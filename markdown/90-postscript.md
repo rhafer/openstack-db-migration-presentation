@@ -1,26 +1,15 @@
 <!-- .slide: data-state="normal" id="call-to-action" data-menu-title="Call to action" -->
-<div class="call-to-action">
-    <h2 class="inside">
-        Call to action line one <br />
-        and call to action line two <br />
-        <a href="http://www.calltoaction.com">www.calltoaction.com</a>
-    </h2>
+# Thank you!
 
-    <h2 class="outside">
-        Thank you.
-    </h2>
-</div>
+* https://github.com/SUSE/psql2mysql
+* PRs are very welcome!
 
+* This presentation: https://github.com/rhafer/openstack-db-migration-presentation
 
-<!-- .slide: data-state="section-break" data-menu-title="Q & A" id="Q-and-A" -->
-# Questions?
+* https://jobs.suse.com/
 
-
-<!-- .slide: data-menu-title="SUSE logo" id="SUSE-logo" data-state="green-bg" -->
 <img data-src="images/SUSE/SUSE-logo-white.png"
-     alt="SUSE&reg; logo"
-     style="width: 25%; height: 25%; margin-top: 20%;"
-     class="full-slide" />
+     alt="SUSE&reg; logo" />
 
 
 <!-- .slide: data-menu-title="Disclaimers" id="disclaimers" data-state="green-bg" -->
