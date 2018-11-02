@@ -33,7 +33,9 @@
         }
 
         img.full-slide {
+            object-fit: contain;
             display: block;
+            height:80%;
             width: 80%;
             max-width: 80%;
             max-height: 80%;
