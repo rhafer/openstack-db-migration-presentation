@@ -1,5 +1,7 @@
-<!-- .slide: data-state="section-break" id="section-break-2" data-timing="10s" -->
-# Let's just migrate. How hard can it be?
+<!-- .slide: data-state="normal" id="lets-migrate" data-timing="10s" -->
+# Let's just migrate.
+
+<img src="images/how-hard-can-it-be.jpg" height="70%" />
 
 
 <!-- .slide: data-state="normal" id="dump-reload" data-timing="20s" data-menu-title="dump-reload" -->
