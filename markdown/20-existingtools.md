@@ -1,4 +1,4 @@
-<!-- .slide: data-state="section-break" id="section-break-1" data-timing="10s" -->
+<!-- .slide: data-state="section-break" id="section-break-2" data-timing="10s" -->
 # Let's just migrate. How hard can it be?
 
 
@@ -7,6 +7,7 @@
 
 ### ... or why a dump and reload approach won't work
 
+Note:
 * SQL dialects
 * Type systems
 * some project used slightly different schema depending on database backend
@@ -15,12 +16,16 @@
 <!-- .slide: data-state="section-break-3" id="existing-tools" data-timing="20s" data-menu-title="" -->
 # Somebody must have done this before
 
-## Looking for existing tools
+### What about existing tools?
 
 
 <!-- .slide: data-state="normal" id="requirements" data-timing="20s" data-menu-title="requirements" -->
 # Requirements
 
+### And other things that are nice to have
+
+Note:
+Requirements:
 * Migrate OpenStack data from PostgreSQL to MariaDB
 * The Database Scheme on the target side is created by the OpenStack tools (db_sync)
 * Some downtime is acceptable
@@ -28,20 +33,19 @@
 * Focus on getting a working and reliable migration
   * Optimizations, e.g. to decrease downtime can happen later.
 
-### Nice to have
+Nice to have:
 * The migration tool should be able to skip certain tables during the migrations
   * E.g. those that contain meta data about alembic and sqlalchemy-migrate. As they are written by the db_sync tools
 * Possibility to skip "soft-deleted" rows
-
-Note:
 * Some OpenStack projects use "soft-deletes" (e.g. cinder and nova) a lot)
 
 
 <!-- .slide: data-state="normal" id="pg2mysql" data-timing="20s" data-menu-title="pg2mysql" -->
 # pg2mysql
 
-https://github.com/pivotal-cf/pg2mysql
+### https://github.com/pivotal-cf/pg2mysql
 
+Note:
 * Implements a one-time online migration
 * written in GO
 * does some schema validation before migration
@@ -59,7 +63,9 @@ https://github.com/pivotal-cf/pg2mysql
 <!-- .slide: data-state="normal" id="kitchensync" data-timing="20s" data-menu-title="kitchensync" -->
 # kitchensync
 
-https://github.com/willbryant/kitchen_sync
+### https://github.com/willbryant/kitchen_sync
+
+Note:
 * provides online incremental synchronization between databases
   * The "incremental" sync has certain requirements on the database schema
     which some OpenStack database don't fulfill
@@ -72,11 +78,13 @@ https://github.com/willbryant/kitchen_sync
 
 
 <!-- .slide: data-state="normal" id="kitchensync" data-timing="20s" data-menu-title="othertools" -->
-## Other?
+# What about other tools?
+
+### None of the existing tools fulfilled our requirements.
+
+Note:
 * More tools exist
 * Some commercial offerings (non OpenSource)
 * Some require control over Schema in the target database
 * ad-hoc special purpose scripts for a specific use case (i.e. for
   a certain application)
-
-### none of the existing tools fulfilled our requirements. And now?
