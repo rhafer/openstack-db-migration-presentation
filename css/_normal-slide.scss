@@ -33,9 +33,11 @@
         }
 
         img.full-slide {
+            display: block;
             width: 80%;
             max-width: 80%;
             max-height: 80%;
+            margin: 0 auto;
         }
     }
 
