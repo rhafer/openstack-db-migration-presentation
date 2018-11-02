@@ -1,7 +1,6 @@
 <!-- .slide: data-state="normal" id="lets-migrate" data-timing="10s" -->
 # Let's just migrate.
-
-<img src="images/how-hard-can-it-be.jpg" height="70%" />
+<img class="full-slide" src="images/how-hard-can-it-be.jpg" />
 
 
 <!-- .slide: data-state="normal" id="dump-reload" data-timing="20s" data-menu-title="dump-reload" -->
