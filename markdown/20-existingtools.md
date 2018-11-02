@@ -6,18 +6,107 @@
 <!-- .slide: data-state="normal" id="dump-reload" data-timing="20s" data-menu-title="dump-reload" -->
 # It's all just SQL!
 
-### ... or why a dump and reload approach won't work
+<code style="font-size: 5rem; display: block; margin: 15%">
+    pg_dumpall | mysql
+</code>
+
+
+<!-- .slide: data-state="normal" id="sql-diff" data-timing="20s" data-menu-title="sql-diff" -->
+# ... or why a simple dump and reload won't work
+
+* Syntax differences
+  * Quotes, Comments, case-sensitivity
+* Data Types
+  * MySQL Text Types have a size limit (TEXT can be 64kB)
+  * different accuracy of default Time/Date types
+  * BOOLEAN vs TINYINT
 
 Note:
-* SQL dialects
-* Type systems
-* some project used slightly different schema depending on database backend
+* "TEXT" is used for quite a few collumns in OpenStack
+  * Mainly "description" and similar columns
 
 
-<!-- .slide: data-state="section-break-3" id="existing-tools" data-timing="20s" data-menu-title="" -->
+<!-- .slide: data-state="normal" id="openstack-diff" data-timing="20s" data-menu-title="openstack-diff" -->
+# Backend specific differences in OpenStack
+### Have you ever tried this:
+
+  `openstack openstack volume create --size 1 "My ` &#x1F4BE;`"`
+
+* It works with PostgreSQL <!-- .element: class="fragment" -->
+* But with MySQL:<!-- .element: class="fragment" -->
+
+`FIXME insert MySQL error here`
+<!-- .element: class="fragment" -->
+
+Note:
+* UTF8 in MySQL is not real UTF8
+  * It's limited to 3 Byte UTF-8 characters
+  * that reflects Unicode Codepoint 0x0000 to 0xFFFF (Basic Multilingual
+    Plane)
+  * It covers most commonly used characters
+  * But misses Emojis, Mathematical Symbols and some less often used CJK
+    characters
+* If the full range is needed with MySQL you need to use "utf8mb4"
+* PostgreSQL support he full utf8 range by default
+* Many OpenStack projects are still hardcoding there schema to "utf8"
+* Characters > 0xFFFF are unlikedly to appear in OpenStack database but
+  we need to be aware of it for the migration
+
+
+<!-- .slide: data-state="normal" id="openstack-diff-2" data-timing="20s" -->
+# Backend specific differences in OpenStack
+### some project used slightly different schema depending on database backend
+
+Note:
+* Ceilometer's workaround for high precision timestamps
+  * DECIMAL+sqlalchemy magic in MySQL
+  * TIMESTAMP in PostgreSQL
+
+
+<!-- .slide: data-state="normal" id="operations" data-timing="20s" -->
+# Operational thoughts
+
+### Incremental Sync
+* Run first DB conversion while the services are still online
+* take services offline
+* do another sync to just update/delete/add the rows changed since
+  the last sync
+* Switch services to new database
+
+### Onetime migration
+* Shutdown services
+* sync/copy directly from PostgreSQL to MySQL
+* reconfigure services and start
+* decommision PostgreSQL
+
+Note:
+* incremental:
+  * Pros:
+    * minimizes Downtime
+  * Cons:
+    * No standard way to find added, changed, deleted Objects since last sync
+      (might be possible via [https://wiki.postgresql.org/wiki/Audit_trigger])
+    * A lot more complex to implement (but there might be existing tools)
+* onetime:
+  * Pros:
+    * Probably the most straight-forward to implement
+  * Longer downtime
+  * Needs a live system with both databases running
+  * harder to do a "dry-run" test with production data
+* dump and reload:
+  * Pros
+    * Would more easily allows dry-runs and importing the data into some test setup outside the production env
+    * Doesn't need both DBs running during the migration
+  * Cons
+    * Most like needs the longest downtime.
+      As all data needs to written at least twice while all OpenStack services
+      are down
+    * What intermediate format to dump to?
+
+
+<!-- .slide: data-state="section-break" id="existing-tools" data-timing="20s" data-menu-title="" -->
 # Somebody must have done this before
-
-### What about existing tools?
+## What about existing tools?
 
 
 <!-- .slide: data-state="normal" id="requirements" data-timing="20s" data-menu-title="requirements" -->
