@@ -128,6 +128,7 @@ Nice to have:
   * E.g. those that contain meta data about alembic and sqlalchemy-migrate. As they are written by the db_sync tools
 * Possibility to skip "soft-deleted" rows
 * Some OpenStack projects use "soft-deletes" (e.g. cinder and nova) a lot)
+* incremental sync
 
 
 <!-- .slide: data-state="normal" id="pg2mysql" data-timing="20s" data-menu-title="pg2mysql" -->
@@ -170,11 +171,15 @@ Note:
 <!-- .slide: data-state="normal" id="kitchensync" data-timing="20s" data-menu-title="othertools" -->
 # What about other tools?
 
-### None of the existing tools fulfilled our requirements.
-
 Note:
 * More tools exist
 * Some commercial offerings (non OpenSource)
 * Some require control over Schema in the target database
 * ad-hoc special purpose scripts for a specific use case (i.e. for
   a certain application)
+
+
+<!-- .slide: data-state="normal" id="wrong-tool" data-timing="20s" data-menu-title="othertools" -->
+## None of the existing tools fits our needs
+<img class="full-slide" src="images/hammer_bent_screw.jpg"/>
+
