@@ -51,7 +51,7 @@ Note:
 
 Note:
 * Galera and large transactions
-* Ceilometer high precision timestamp workarounds in Ceilometer
+* High precision timestamp workarounds in Ceilometer
 * Type for "soft-deletion" not really consistent across different
   OpenStack projects
 
@@ -61,14 +61,21 @@ Note:
 
 Note:
 * A proof of concept script is great, but doesn't scale.
-* Requires hacks like importlib
+* Namespaces are great, allows us to logically seperate parts of the code
+* In fact, we did this for the Ceilometer high precision timestamp code
+* Easier testing, does not require hacks like using importlib
 
 
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
 # Releasing onto pypi
 
+<img class="full-slide" src="images/pypi-logo.jpg" />
+
 Note:
-* pypi is ... opinionated.
+* Being open source is more than just pushing the code up to GitHub, and declaring the job is done.
+* To that end, we should make regular releases, and if we push it up to pypi, then we can easily install via pip
+* As a bonus, this gives us viewable metrics about installations that GitHub can't readily give
+* However, pypi has opinions. Strong ones.
 
 
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
@@ -76,6 +83,9 @@ Note:
 
 Note:
 * pbr is even more opinionated!
+* If you choose to use requirements files for dependencies and then use setuptools, there is no simple way to not duplicate them between requirements.txt and setup.py
+* Using setup.py install will not install dependencies for pbr-using projects, so we must do it by hand, or use pip
+* If a long-description isn't specified in setup.cfg, pbr evaluates it to False, and then sets that as the long description anyway
 
 
 <!-- .slide: data-state="section-break" id="p2m-demo" data-timing="20s" -->
