@@ -169,13 +169,13 @@
   font-style: italic;
 }
 .asciinema-terminal.font-small {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 .asciinema-terminal.font-medium {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 .asciinema-terminal.font-big {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 .asciinema-player .control-bar {
   width: 100%;

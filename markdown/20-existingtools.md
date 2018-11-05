@@ -35,7 +35,7 @@ Note:
 * It works with PostgreSQL <!-- .element: class="fragment" -->
 * But with MySQL:<!-- .element: class="fragment" -->
 
-<asciinema-player id="player" cols="80" rows="6" speed="3" theme="solarized-dark" src="images/emoji.cast"></asciinema-player>
+<asciinema-player id="player" cols="80" rows="6" speed="3" font-size="big" theme="solarized-dark" src="images/emoji.cast"></asciinema-player>
 <!-- .element: class="fragment emoji-cast" -->
 
 Note:
