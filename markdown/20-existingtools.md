@@ -47,9 +47,9 @@ Note:
   * But misses Emojis, Mathematical Symbols and some less often used CJK
     characters
 * If the full range is needed with MySQL you need to use "utf8mb4"
-* PostgreSQL support he full utf8 range by default
-* Many OpenStack projects are still hardcoding there schema to "utf8"
-* Characters > 0xFFFF are unlikedly to appear in OpenStack database but
+* PostgreSQL supports the full utf8 range by default
+* Many OpenStack projects are still hardcoding their schema to "utf8"
+* Characters > 0xFFFF are unlikely to appear in OpenStack database but
   we need to be aware of it for the migration
 
 
