@@ -35,8 +35,8 @@ Note:
 * It works with PostgreSQL <!-- .element: class="fragment" -->
 * But with MySQL:<!-- .element: class="fragment" -->
 
-`FIXME insert MySQL error here`
-<!-- .element: class="fragment" -->
+<asciinema-player id="player" cols="80" rows="6" speed="3" theme="solarized-dark" src="images/emoji.cast"></asciinema-player>
+<!-- .element: class="fragment emoji-cast" -->
 
 Note:
 * UTF8 in MySQL is not real UTF8
