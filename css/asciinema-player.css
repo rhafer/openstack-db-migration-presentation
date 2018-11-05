@@ -153,6 +153,7 @@
   padding: 0;
   display: inline-block;
   height: 1.3333333333em;
+  font-family: Consolas, Menlo, 'Bitstream Vera Sans Mono', monospace, 'Powerline Symbols';
 }
 .asciinema-terminal .line {
   display: block;
@@ -1997,7 +1998,7 @@
 }
 .asciinema-theme-tango .asciinema-terminal {
   color: #cccccc;
-  background-color: #121314;
+  background-color: #121314 !important;
   border-color: #121314;
 }
 .asciinema-theme-tango .fg-bg {
@@ -2114,7 +2115,7 @@
 }
 .asciinema-theme-solarized-dark .asciinema-terminal {
   color: #839496;
-  background-color: #002b36;
+  background-color: #002b36 !important;
   border-color: #002b36;
 }
 .asciinema-theme-solarized-dark .fg-bg {
