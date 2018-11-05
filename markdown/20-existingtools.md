@@ -30,7 +30,7 @@ Note:
 # Backend specific differences in OpenStack
 ### Have you ever tried this:
 
-  `openstack openstack volume create --size 1 "My ` &#x1F4BE;`"`
+  `openstack volume create --size 1 "My ` &#x1F4BE;`"`
 
 * It works with PostgreSQL <!-- .element: class="fragment" -->
 * But with MySQL:<!-- .element: class="fragment" -->
@@ -55,7 +55,7 @@ Note:
 
 <!-- .slide: data-state="normal" id="openstack-diff-2" data-timing="20s" -->
 # Backend specific differences in OpenStack
-### some project used slightly different schema depending on database backend
+### some projects use slightly different schemas depending on database backend
 
 Note:
 * Ceilometer's workaround for high precision timestamps
