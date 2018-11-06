@@ -69,22 +69,26 @@ Note:
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
 # Releasing onto pypi
 
-<img class="full-slide" src="images/pypi-logo.jpg" />
+<img class="full-slide" src="images/pypi-release.jpg" />
 
 Note:
 * Being open source is more than just pushing the code up to GitHub, and declaring the job is done.
 * To that end, we should make regular releases, and if we push it up to pypi, then we can easily install via pip
 * As a bonus, this gives us viewable metrics about installations that GitHub can't readily give
-* However, pypi has opinions. Strong ones.
+* However, pypi has opinions. Strong ones. The license classifier is only checked on upload, and if it's incorrect, the upload is rejected.
 
 
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
 # Fun and games with pbr
 
+<img class="full-slide" src="images/pypi-0.4.0-release.jpg" />
+
 Note:
+* pbr is Python Build Reasonableness. It gives you a bunch of useful patterns around installation, it's heavily used by OpenStack and sadly no many other projects, but I like it, so let's make use of it.
 * pbr is even more opinionated!
 * If you choose to use requirements files for dependencies and then use setuptools, there is no simple way to not duplicate them between requirements.txt and setup.py
 * Using setup.py install will not install dependencies for pbr-using projects, so we must do it by hand, or use pip
+* Including a version number in setup.cfg causes pbr to behave oddly.
 * If a long-description isn't specified in setup.cfg, pbr evaluates it to False, and then sets that as the long description anyway
 
 
