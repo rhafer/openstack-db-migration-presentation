@@ -72,14 +72,140 @@ SQLAlchemy provides some very useful features for our purposes
 * OpenStack is using it
 
 
-<!-- .slide: data-state="normal" id="p2m-issues-solved" data-timing="20s" -->
-# Issues we ran into
+<!-- .slide: data-state="section-break" id="p2m-issues-break" data-timing="20s" -->
+# Issues
+## ... and how we solved them
+
+
+<!-- .slide: data-state="normal" id="p2m-issues-fk" data-timing="20s" -->
+# Foreign keys and other constraints
+
+Migrating table by table without a certain order will give you this:
+```
+IntegrityError: (pymysql.err.IntegrityError)
+  (1452, u'Cannot add or update a child row: a foreign key constraint fails
+    ( `neutron`.`ml2_port_bindings`, CONSTRAINT `ml2_port_bindings_ibfk_1`
+      FOREIGN KEY (`port_id`) REFERENCES `ports` (`id`) ON DELETE CASCADE
+    )')
+```
+
+* SQLalchemy can sort tables in order of foreign key dependency for us &#x1F603;
+<!-- .element: class="fragment" data-fragment-index="1"-->
+* But there might be circular dependencies &#x1F620;
+<!-- .element: class="fragment" data-fragment-index="2"-->
+* Luckily MySQL allows to disable constrain checks (globally and per session) &#x1F605;
+<!-- .element: class="fragment" data-fragment-index="3" -->
+```
+SET SESSION check_constraint_checks='OFF'
+SET SESSION foreign_key_checks='OFF'
+```
+<!-- .element: class="fragment" data-fragment-index="3"-->
 
 Note:
-* Galera and large transactions
-* High precision timestamp workarounds in Ceilometer
-* Type for "soft-deletion" not really consistent across different
-  OpenStack projects
+* The tool migrates table by table
+* During the migration foreign key constraints might be violated temporarily
+* Sorting tables is not always possible (e.g. because of circular dependencies)
+* When the migration completed the database should be fully consistent again
+
+
+<!-- .slide: data-state="normal" id="p2m-issues-galera" data-timing="20s" -->
+# Galera and huge transactions
+
+Once the tables to migrate get a certain size you'll see this when using a
+Galera cluster:
+
+```
+InternalError: (pymysql.err.InternalError)
+               (1180, u'wsrep_max_ws_rows exceeded')
+```
+
+* caused by Galera limitations and non-suitable default config
+* meanwhile the config defaults for galera change
+* Still splitting into smaller transactions makes sense
+
+Note:
+* Galera has a hard limit on the size of single transaction, or more
+  specifically "write set"
+  * based on the number of rows touched
+  * based on the memory used by a writeset
+* psql2mysql took a very simple approach initially and issues a single
+  transaction per table
+* these transactions can get huge and hit those limits
+* newer version of Galera/wsrep removed the default row limit and set the
+  memory limit to the maximum values (about 2GB)
+* Sidenote: This limits also can get issue with the ceilometer-expirer job
+
+
+<!-- .slide: data-state="normal" id="p2m-issues-mem" data-timing="20s" -->
+# Memory usage and runtime
+
+<img class="full-slide fragment" src="images/memory-vs-chunksize-vs-runtime.svg"/>
+
+Note:
+* The "every table in a single transaction" approach had another issue
+* Large tables cause huge memory usage
+  * by the migration tool itself (several GB of member)
+  * as well as by the target mysql processes
+* Solution: Multiple commits per table
+  * configurable chunk-size (number of rows to commit per transcation)
+* We ran a couple of tests using different chunksizes
+* Took a nova database as the sample
+  * biggest table had around 300 000 rows
+* Python mem_profiler
+* With an unlimted number of row per transcation memory usage can get huge
+* With a small chunksize (1 - 100) the runtime increases significantly
+* Sample database took > 30min with 1 row/commit
+  vs ~3min 10 000 rows/commit
+* sweet spot seems to be at 10000
+
+<!-- .slide: data-state="normal" id="p2m-issues-mem1" data-timing="20s" -->
+# Memory usage
+<img class="full-slide" src="images/memory-vs-chunksize.svg">
+
+
+<!-- .slide: data-state="normal" id="p2m-issues-mem2" data-timing="20s" -->
+# Runtime
+<img class="full-slide" src="images/runtime-vs-chunksize.svg">
+
+
+<!-- .slide: data-state="normal" id="p2m-issues-ceilometer" data-timing="20s" -->
+# Type incompatibilities in Ceilometer
+
+```
+DataError: (pymysql.err.DataError)
+           (1265, u"Data truncated for column 'timestamp' at row 1") 
+```
+
+PostgreSQL:<!-- .element: class="fragment" data-fragment-index="1"-->
+```
+CREATE TABLE public.sample (
+  "timestamp" timestamp without time zone,
+  recorded_at timestamp without time zone,
+  ...);
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+MySQL<!-- .element: class="fragment" data-fragment-index="1"-->
+
+```
+CREATE TABLE `sample` (
+  `timestamp` decimal(20,6) DEFAULT NULL,
+  `recorded_at` decimal(20,6) DEFAULT NULL,
+  ...);
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+Note:
+* Ceilometer needs high precision timestamps
+* Older MySQL releases didn't have support of that
+* Ceilometer is working around that by implementing a TypeDecorator for
+  DateTime type and mapping that to a DECIMAL in MySQL
+* For PostgreSQL it's just using the available high precision timestamps
+* psql2mysql needs to use the same approach (luckily we're using python and
+  SQLalchemy, so we could just "borrow" the code)
+* During the migration the tool compares the source and target types of the
+  table columns, when source == "timestampe" and target == "decimal" the
+  TypeDecorator is installed and values will be converted on the fly
 
 
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
