@@ -5,12 +5,25 @@
 <!-- .slide: data-state="normal" id="p2m-goals" data-timing="20s" -->
 # Goals
 
-### KISS principle
+<div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between;">
+<div class="fragment" style="padding: 5px;">
+    <img style="max-height:70vh; max-width: 33vw; width: auto; height: 350px" src="images/newton-logo.png">
+</div>
+<div class="fragment" style="padding: 5px;">
+    <img style="max-height:70vh; max-width: 33vw; width: auto; height: 350px" src="images/osi_standard_logo.png">
+</div>
+<div class="fragment" style="padding: 5px;">
+    <img style="max-height:70vh; max-width: 33vw; width: auto; height: 350px" src="images/Kiss_-_Keep_it_simple_stupid.jpg">
+</div>
+</div>
 
 Note:
-* Open Source
-* Newton, but should work with other OpenStack releases
-* It's ok to make it somewhat specific to OpenStack databases
+* We want to release this as Open Source Software to allow other to
+  use/improve it.
+* Newton, but should work with other (newer) OpenStack releases
+  * This also means that we didn't want a completely generic tool.
+    It's ok to make it somewhat specific to OpenStack databases
+    Especially if it helps to keep the tool simple
 * Allow to validate source data before running the actual migration and point
   the user to problematic Rows/Values
 
