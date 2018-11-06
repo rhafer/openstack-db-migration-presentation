@@ -158,6 +158,7 @@ Note:
   vs ~3min 10 000 rows/commit
 * sweet spot seems to be at 10000
 
+
 <!-- .slide: data-state="normal" id="p2m-issues-mem1" data-timing="20s" -->
 # Memory usage
 <img class="full-slide" src="images/memory-vs-chunksize.svg">
