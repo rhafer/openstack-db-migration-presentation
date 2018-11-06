@@ -29,31 +29,44 @@ Note:
 
 
 <!-- .slide: data-state="normal" id="p2m-intro" data-timing="20s" -->
-# Choices
-
-Note:
-* At SUSE we tend to have a little bit of bias towards Ruby
-* Python (2.7, 3.5 and 3.6)
-* SQLalchemy
-
-
-<!-- .slide: data-state="normal" id="p2m-intro" data-timing="20s" -->
 # Introducing psql2mysql
-
 https://github.com/SUSE/psql2mysql
 
-* precheck
-* migrate
-* purge-tables
-* batch
+* Written in Python (works with 2.7 and recent 3.X releases)
+* Stand-alone command line tool. To migrate a single database
+
+```
+psql2mysql
+    --source postgresql://<user>:<password>@<host>/<database>
+    --target mysql+pymysql://<user>:<password>@<host>/<database>
+    migrate
+```
+
+* Subcommands "prechecks" and "purge-tables"
+* Batch mode to migrate multiple databases at once
+
+Note:
+* Python was more or less the obvisous choice
+  * We could leverage a couple of OpenStack libraries (where it made sense)
+  * We could use SQLalchemy, which provides nice Abstractions to access
+    different SQL databases
+* Can run on any machine that has a decent network connection to the
+  database(s)
+  * Usually better to run it locally on one of the cluster nodes
 
 
 <!-- .slide: data-state="normal" id="p2m-internals" data-timing="20s" -->
 # SQLAlchemy for the win!
+* Introspection
+* Type Abstractions
+* OpenStack is using it
 
 Note:
-* Introspection to read Tables and Columns
+SQLAlchemy provides some very useful features for our purposes
+* Introspection
+  * read Tables, Columns and Types
 * Type Abstractions defined for most types used by OpenStack
+  * "Internal" Type System that is largely backend in dependent
 * Extensible (type decorators)
 * If needed backend specific SQL can still be used (and we needed that)
 * OpenStack is using it
