@@ -46,9 +46,9 @@ psql2mysql
 * Batch mode to migrate multiple databases at once
 
 Note:
-* Python was more or less the obvisous choice
+* Python was more or less the obvious choice
   * We could leverage a couple of OpenStack libraries (where it made sense)
-  * We could use SQLalchemy, which provides nice Abstractions to access
+  * We could use SQLalchemy, which provides nice abstractions to access
     different SQL databases
 * Can run on any machine that has a decent network connection to the
   database(s)
@@ -93,7 +93,7 @@ IntegrityError: (pymysql.err.IntegrityError)
 <!-- .element: class="fragment" data-fragment-index="1"-->
 * But there might be circular dependencies &#x1F620;
 <!-- .element: class="fragment" data-fragment-index="2"-->
-* Luckily MySQL allows to disable constrain checks (globally and per session) &#x1F605;
+* Luckily MySQL allows to disable constraint checks (globally and per session) &#x1F605;
 <!-- .element: class="fragment" data-fragment-index="3" -->
 ```
 SET SESSION check_constraint_checks='OFF'
@@ -105,7 +105,7 @@ Note:
 * The tool migrates table by table
 * During the migration foreign key constraints might be violated temporarily
 * Sorting tables is not always possible (e.g. because of circular dependencies)
-* When the migration completed the database should be fully consistent again
+* When the migration is done the database should be fully consistent again
 
 
 <!-- .slide: data-state="normal" id="p2m-issues-galera" data-timing="20s" -->
@@ -143,8 +143,8 @@ Note:
 
 Note:
 * The "every table in a single transaction" approach had another issue
-* Large tables cause huge memory usage
-  * by the migration tool itself (several GB of member)
+* Large tables cause significantly increased memory usage
+  * by the migration tool itself (on the order of several GBs of memory)
   * as well as by the target mysql processes
 * Solution: Multiple commits per table
   * configurable chunk-size (number of rows to commit per transcation)
@@ -156,7 +156,7 @@ Note:
 * With a small chunksize (1 - 100) the runtime increases significantly
 * Sample database took > 30min with 1 row/commit
   vs ~3min 10 000 rows/commit
-* sweet spot seems to be at 10000
+* Sweet spot seems to be at 10000
 
 
 <!-- .slide: data-state="normal" id="p2m-issues-mem1" data-timing="20s" -->
@@ -174,7 +174,7 @@ Note:
 
 ```
 DataError: (pymysql.err.DataError)
-           (1265, u"Data truncated for column 'timestamp' at row 1") 
+           (1265, u"Data truncated for column 'timestamp' at row 1")
 ```
 
 PostgreSQL:<!-- .element: class="fragment" data-fragment-index="1"-->
@@ -198,14 +198,14 @@ CREATE TABLE `sample` (
 
 Note:
 * Ceilometer needs high precision timestamps
-* Older MySQL releases didn't have support of that
+* Older MySQL releases don't support that
 * Ceilometer is working around that by implementing a TypeDecorator for
   DateTime type and mapping that to a DECIMAL in MySQL
 * For PostgreSQL it's just using the available high precision timestamps
 * psql2mysql needs to use the same approach (luckily we're using python and
   SQLalchemy, so we could just "borrow" the code)
 * During the migration the tool compares the source and target types of the
-  table columns, when source == "timestampe" and target == "decimal" the
+  table columns, when source == "timestamp" and target == "decimal" the
   TypeDecorator is installed and values will be converted on the fly
 
 
