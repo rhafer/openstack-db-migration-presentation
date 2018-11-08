@@ -15,5 +15,5 @@
 <!-- .slide: data-state="qrcode" id="qrcode" data-menu-title="QR code" data-timing="0" -->
 
 <div class="qrcode" id="qrcode-talk"/>
-<h2><a href="https://example.com/link/to/this/talk" target="_blank"
-       id="talk">https://example.com/link/to/this/talk</a></h2>
+<h3><a href="https://rhafer.github.io/openstack-db-migration-presentation" target="_blank"
+       id="talk">https://rhafer.github.io/openstack-db-migration-presentation</a></h2>
