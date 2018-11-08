@@ -249,6 +249,13 @@ Note:
 # Demo Time
 
 
+<!-- .slide: data-state="normal" id="p2m-demo-precheck" data-timing="20s" -->
+# Demo: Precheck Failure
+
+<asciinema-player id="player" cols="80" rows="16" speed="3" font-size="big" theme="solarized-dark" src="images/precheck-failure.cast"></asciinema-player>
+<!-- .element: class="fragment emoji-cast" -->
+
+
 <!-- .slide: data-state="normal" id="p2m-improve" data-timing="20s" -->
 # Possible Improvements
 
