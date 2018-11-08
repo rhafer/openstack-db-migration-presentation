@@ -42,7 +42,7 @@ psql2mysql
     migrate
 ```
 
-* Subcommands "prechecks" and "purge-tables"
+* Subcommands "precheck" and "purge-tables"
 * Batch mode to migrate multiple databases at once
 
 Note:
