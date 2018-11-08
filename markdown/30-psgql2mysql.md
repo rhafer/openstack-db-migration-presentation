@@ -209,6 +209,17 @@ Note:
   TypeDecorator is installed and values will be converted on the fly
 
 
+<!-- .slide: data-state="section-break" id="p2m-demo" data-timing="20s" -->
+# Demo Time
+
+
+<!-- .slide: data-state="normal" id="p2m-demo-precheck" data-timing="20s" -->
+# Demo: Precheck Failure
+
+<asciinema-player id="player" cols="80" rows="16" speed="3" font-size="big" theme="solarized-dark" src="images/precheck-failure.cast"></asciinema-player>
+
+
+
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
 # Converting into a module
 
@@ -243,17 +254,6 @@ Note:
 * Using setup.py install will not install dependencies for pbr-using projects, so we must do it by hand, or use pip
 * Including a version number in setup.cfg causes pbr to behave oddly.
 * If a long-description isn't specified in setup.cfg, pbr evaluates it to False, and then sets that as the long description anyway
-
-
-<!-- .slide: data-state="section-break" id="p2m-demo" data-timing="20s" -->
-# Demo Time
-
-
-<!-- .slide: data-state="normal" id="p2m-demo-precheck" data-timing="20s" -->
-# Demo: Precheck Failure
-
-<asciinema-player id="player" cols="80" rows="16" speed="3" font-size="big" theme="solarized-dark" src="images/precheck-failure.cast"></asciinema-player>
-<!-- .element: class="fragment emoji-cast" -->
 
 
 <!-- .slide: data-state="normal" id="p2m-improve" data-timing="20s" -->
