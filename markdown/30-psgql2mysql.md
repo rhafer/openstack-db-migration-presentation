@@ -67,7 +67,11 @@ SQLAlchemy provides some very useful features for our purposes
   * read Tables, Columns and Types
 * Type Abstractions defined for most types used by OpenStack
   * "Internal" Type System that is largely backend in dependent
-* Extensible (type decorators)
+  * Enums are abstracted so the "enum" issue that all the tools we evaluated
+    were suffering from, becomes a non-issue with SQLalchemy.
+* Extensible
+  * type decorators to define custom type abstractions (this helped as
+    a lot. More about that on a later slide)
 * If needed backend specific SQL can still be used (and we needed that)
 * OpenStack is using it
 
