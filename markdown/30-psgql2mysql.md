@@ -224,6 +224,9 @@ Note:
 <asciinema-player id="player" cols="81" rows="16" speed="3" font-size="big" theme="tango" src="images/precheck-failure.cast"></asciinema-player>
 
 
+<!-- .slide: data-state="normal" class="full-screen" id="p2m-demo-neutron" data-timing="20s" -->
+<asciinema-player id="player" cols="111" rows="32" speed="3" font-size="medium" theme="tango" src="images/neutron.cast"/>
+
 
 <!-- .slide: data-state="normal" id="p2m-demo-batch" data-timing="20s" -->
 # Demo: Batching
