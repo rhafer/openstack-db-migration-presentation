@@ -36,7 +36,7 @@ https://github.com/SUSE/psql2mysql
 * Written in Python (works with 2.7 and recent 3.X releases)
 * Stand-alone command line tool. To migrate a single database
 
-```
+```bash
 psql2mysql
     --source postgresql://<user>:<password>@<host>/<database>
     --target mysql+pymysql://<user>:<password>@<host>/<database>
@@ -86,7 +86,7 @@ SQLAlchemy provides some very useful features for our purposes
 # Foreign keys and other constraints
 
 Migrating table by table without a certain order will give you this:
-```
+```clean
 IntegrityError: (pymysql.err.IntegrityError)
   (1452, u'Cannot add or update a child row: a foreign key constraint fails
     ( `neutron`.`ml2_port_bindings`, CONSTRAINT `ml2_port_bindings_ibfk_1`
@@ -100,9 +100,9 @@ IntegrityError: (pymysql.err.IntegrityError)
 <!-- .element: class="fragment" data-fragment-index="2"-->
 * Luckily MySQL allows to disable constraint checks (globally and per session) &#x1F605;
 <!-- .element: class="fragment" data-fragment-index="3" -->
-```
-SET SESSION check_constraint_checks='OFF'
-SET SESSION foreign_key_checks='OFF'
+```sql
+SET SESSION check_constraint_checks='OFF';
+SET SESSION foreign_key_checks='OFF';
 ```
 <!-- .element: class="fragment" data-fragment-index="3"-->
 
@@ -119,7 +119,7 @@ Note:
 Once the tables to migrate get a certain size you'll see this when using a
 Galera cluster:
 
-```
+```clean
 InternalError: (pymysql.err.InternalError)
                (1180, u'wsrep_max_ws_rows exceeded')
 ```
@@ -177,13 +177,13 @@ Note:
 <!-- .slide: data-state="normal" id="p2m-issues-ceilometer" data-timing="20s" -->
 # Type incompatibilities in Ceilometer
 
-```
+```clean
 DataError: (pymysql.err.DataError)
            (1265, u"Data truncated for column 'timestamp' at row 1")
 ```
 
 PostgreSQL:<!-- .element: class="fragment" data-fragment-index="1"-->
-```
+```sql
 CREATE TABLE public.sample (
   "timestamp" timestamp without time zone,
   recorded_at timestamp without time zone,
@@ -193,7 +193,7 @@ CREATE TABLE public.sample (
 
 MySQL<!-- .element: class="fragment" data-fragment-index="1"-->
 
-```
+```sql
 CREATE TABLE `sample` (
   `timestamp` decimal(20,6) DEFAULT NULL,
   `recorded_at` decimal(20,6) DEFAULT NULL,
