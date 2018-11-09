@@ -233,6 +233,7 @@ Note:
 
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
 # Converting into a module
+<img class="full-slide" src="images/1200px-ISS_Destiny_Lab.jpg" />
 
 Note:
 * A proof of concept script is great, but doesn't scale.
