@@ -224,6 +224,12 @@ Note:
 
 
 
+<!-- .slide: data-state="normal" id="p2m-demo-batch" data-timing="20s" -->
+# Demo: Batching
+
+<asciinema-player id="player" cols="80" rows="16" speed="3" font-size="big" theme="solarized-dark" src="images/batch.cast"></asciinema-player>
+
+
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
 # Converting into a module
 

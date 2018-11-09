@@ -1,0 +1,394 @@
+{
+  "height": 23,
+  "version": 1,
+  "stdout": [
+    [
+      0.118243,
+      "\u001b[01;35mroot\u001b[0m@\u001b[01;31md52-54-77-77-01-01\u001b[0m:\u001b[01;35m~\u001b[0m # "
+    ],
+    [
+      2.46788,
+      "c"
+    ],
+    [
+      0.227296,
+      "a"
+    ],
+    [
+      0.238561,
+      "t"
+    ],
+    [
+      0.237611,
+      " "
+    ],
+    [
+      0.721019,
+      "b"
+    ],
+    [
+      0.077077,
+      "a"
+    ],
+    [
+      0.219311,
+      "\u0007tch"
+    ],
+    [
+      1.156747,
+      "-"
+    ],
+    [
+      0.080327,
+      "f"
+    ],
+    [
+      0.238751,
+      "ile "
+    ],
+    [
+      1.022914,
+      "\r\n"
+    ],
+    [
+      0.002102,
+      "keystone:\r\n  source: postgresql://keystone:tNKQr6KqNcLn@192.168.247.86/keystone\r\n  target: mysql+pymysql://keystone:tNKQr6KqNcLn@cluster-controller.vp4.cloud.suse.de/keystone?charset=utf8\r\nglance:\r\n  source: postgresql://glance:oPpak0ngM1JQ@192.168.247.86/glance\r\n  target: mysql+pymysql://glance:oPpak0ngM1JQ@cluster-controller.vp4.cloud.suse.de/glance?charset=utf8\r\n"
+    ],
+    [
+      0.000694,
+      "\u001b[01;35mroot\u001b[0m@\u001b[01;31md52-54-77-77-01-01\u001b[0m:\u001b[01;35m~\u001b[0m # "
+    ],
+    [
+      14.492302,
+      "psql2mysql --batch batch-file precheck"
+    ],
+    [
+      1.017798,
+      "\r\n"
+    ],
+    [
+      0.718725,
+      "Processing database \"glance\"... \r\n"
+    ],
+    [
+      0.554127,
+      "Success. No errors found during prechecks.\r\n"
+    ],
+    [
+      0.000393,
+      "Processing database \"keystone\"... \r\n"
+    ],
+    [
+      0.881307,
+      "Success. No errors found during prechecks.\r\n"
+    ],
+    [
+      0.000416,
+      "Batch processing done.\r\n"
+    ],
+    [
+      0.093061,
+      "\u001b[01;35mroot\u001b[0m@\u001b[01;31md52-54-77-77-01-01\u001b[0m:\u001b[01;35m~\u001b[0m # "
+    ],
+    [
+      6.229556,
+      "psql2mysql --batch batch-file migrate"
+    ],
+    [
+      1.70983,
+      "\r\n"
+    ],
+    [
+      0.633896,
+      "Processing database \"glance\"... \r\n"
+    ],
+    [
+      0.151418,
+      "2018-11-09 01:47:01.630 18452 INFO psql2mysql [-] Disabling constraints on target database\r\n"
+    ],
+    [
+      0.664929,
+      "2018-11-09 01:47:02.294 18452 INFO psql2mysql [-] Disabling constraints on target DB for the migration\r\n"
+    ],
+    [
+      0.001636,
+      "2018-11-09 01:47:02.296 18452 INFO psql2mysql [-] Migrating table: 'artifacts'\r\n"
+    ],
+    [
+      0.003722,
+      "2018-11-09 01:47:02.300 18452 INFO psql2mysql [-] Migrating table: 'images'\r\n"
+    ],
+    [
+      0.011567,
+      "2018-11-09 01:47:02.312 18452 INFO psql2mysql [-] Migrating table: 'metadef_namespaces'\r\n"
+    ],
+    [
+      0.002323,
+      "2018-11-09 01:47:02.314 18452 INFO psql2mysql [-] Migrating table: 'metadef_resource_types'\r\n"
+    ],
+    [
+      0.002288,
+      "2018-11-09 01:47:02.317 18452 INFO psql2mysql [-] Rowcount 5\r\n"
+    ],
+    [
+      0.018034,
+      "2018-11-09 01:47:02.335 18452 INFO psql2mysql [-] Migrating table: 'migrate_version'\r\n"
+    ],
+    [
+      0.000384,
+      "2018-11-09 01:47:02.335 18452 INFO psql2mysql [-] Migrating table: 'tasks'\r\n"
+    ],
+    [
+      0.003839,
+      "2018-11-09 01:47:02.339 18452 INFO psql2mysql [-] Migrating table: 'artifact_blobs'\r\n"
+    ],
+    [
+      0.003561,
+      "2018-11-09 01:47:02.342 18452 INFO psql2mysql [-] Migrating table: 'artifact_dependencies'\r\n"
+    ],
+    [
+      0.002691,
+      "2018-11-09 01:47:02.345 18452 INFO psql2mysql [-] Migrating table: 'artifact_properties'\r\n"
+    ],
+    [
+      0.002812,
+      "2018-11-09 01:47:02.348 18452 INFO psql2mysql [-] Migrating table: 'artifact_tags'\r\n"
+    ],
+    [
+      0.00282,
+      "2018-11-09 01:47:02.351 18452 INFO psql2mysql [-] Migrating table: 'image_locations'\r\n"
+    ],
+    [
+      0.005885,
+      "2018-11-09 01:47:02.356 18452 INFO psql2mysql [-] Migrating table: 'image_members'\r\n"
+    ],
+    [
+      0.003756,
+      "2018-11-09 01:47:02.360 18452 INFO psql2mysql [-] Migrating table: 'image_properties'\r\n"
+    ],
+    [
+      0.002028,
+      "2018-11-09 01:47:02.362 18452 INFO psql2mysql [-] Migrating table: 'image_tags'\r\n"
+    ],
+    [
+      0.001875,
+      "2018-11-09 01:47:02.364 18452 INFO psql2mysql [-] Migrating table: 'metadef_namespace_resource_types'\r\n"
+    ],
+    [
+      0.001745,
+      "2018-11-09 01:47:02.366 18452 INFO psql2mysql [-] Migrating table: 'metadef_objects'\r\n"
+    ],
+    [
+      0.001742,
+      "2018-11-09 01:47:02.368 18452 INFO psql2mysql [-] Migrating table: 'metadef_properties'\r\n"
+    ],
+    [
+      0.002881,
+      "2018-11-09 01:47:02.371 18452 INFO psql2mysql [-] Migrating table: 'metadef_tags'\r\n"
+    ],
+    [
+      0.001837,
+      "2018-11-09 01:47:02.373 18452 INFO psql2mysql [-] Migrating table: 'task_info'\r\n"
+    ],
+    [
+      0.001926,
+      "2018-11-09 01:47:02.374 18452 INFO psql2mysql [-] Migrating table: 'artifact_blob_locations'\r\n"
+    ],
+    [
+      0.003595,
+      "Processing database \"keystone\"... \r\n"
+    ],
+    [
+      0.168906,
+      "2018-11-09 01:47:02.547 18452 INFO psql2mysql [-] Disabling constraints on target database\r\n"
+    ],
+    [
+      1.158496,
+      "2018-11-09 01:47:03.705 18452 INFO psql2mysql [-] Disabling constraints on target DB for the migration\r\n"
+    ],
+    [
+      0.011312,
+      "2018-11-09 01:47:03.716 18452 INFO psql2mysql [-] Migrating table: 'assignment'\r\n"
+    ],
+    [
+      0.003438,
+      "2018-11-09 01:47:03.718 18452 INFO psql2mysql [-] Rowcount 15\r\n"
+    ],
+    [
+      0.024798,
+      "2018-11-09 01:47:03.744 18452 INFO psql2mysql [-] Migrating table: 'config_register'\r\n"
+    ],
+    [
+      0.003832,
+      "2018-11-09 01:47:03.748 18452 INFO psql2mysql [-] Migrating table: 'consumer'\r\n"
+    ],
+    [
+      0.0095,
+      "2018-11-09 01:47:03.757 18452 INFO psql2mysql [-] Migrating table: 'credential'\r\n"
+    ],
+    [
+      0.004561,
+      "2018-11-09 01:47:03.760 18452 INFO psql2mysql [-] Rowcount 3\r\n"
+    ],
+    [
+      0.024365,
+      "2018-11-09 01:47:03.786 18452 INFO psql2mysql [-] Migrating table: 'endpoint_group'\r\n"
+    ],
+    [
+      0.008245,
+      "2018-11-09 01:47:03.795 18452 INFO psql2mysql [-] Migrating table: 'group'\r\n"
+    ],
+    [
+      0.003539,
+      "2018-11-09 01:47:03.799 18452 INFO psql2mysql [-] Migrating table: 'id_mapping'\r\n"
+    ],
+    [
+      0.003222,
+      "2018-11-09 01:47:03.802 18452 INFO psql2mysql [-] Migrating table: 'identity_provider'\r\n"
+    ],
+    [
+      0.007795,
+      "2018-11-09 01:47:03.810 18452 INFO psql2mysql [-] Migrating table: 'mapping'\r\n"
+    ],
+    [
+      0.00509,
+      "2018-11-09 01:47:03.815 18452 INFO psql2mysql [-] Migrating table: 'migrate_version'\r\n"
+    ],
+    [
+      0.000556,
+      "2018-11-09 01:47:03.816 18452 INFO psql2mysql [-] Migrating table: 'policy'\r\n"
+    ],
+    [
+      0.004226,
+      "2018-11-09 01:47:03.820 18452 INFO psql2mysql [-] Migrating table: 'policy_association'\r\n"
+    ],
+    [
+      0.002497,
+      "2018-11-09 01:47:03.822 18452 INFO psql2mysql [-] Migrating table: 'project'\r\n"
+    ],
+    [
+      0.002659,
+      "2018-11-09 01:47:03.825 18452 INFO psql2mysql [-] Rowcount 5\r\n"
+    ],
+    [
+      0.006808,
+      "2018-11-09 01:47:03.832 18452 INFO psql2mysql [-] Migrating table: 'project_endpoint'\r\n"
+    ],
+    [
+      0.001742,
+      "2018-11-09 01:47:03.834 18452 INFO psql2mysql [-] Migrating table: 'region'\r\n"
+    ],
+    [
+      0.001601,
+      "2018-11-09 01:47:03.835 18452 INFO psql2mysql [-] Rowcount 1\r\n"
+    ],
+    [
+      0.026993,
+      "2018-11-09 01:47:03.862 18452 INFO psql2mysql [-] Migrating table: 'revocation_event'\r\n"
+    ],
+    [
+      0.004883,
+      "2018-11-09 01:47:03.867 18452 INFO psql2mysql [-] Rowcount 170\r\n"
+    ],
+    [
+      0.092305,
+      "2018-11-09 01:47:03.955 18452 INFO psql2mysql [-] Migrating table: 'role'\r\n"
+    ],
+    [
+      0.00294,
+      "2018-11-09 01:47:03.962 18452 INFO psql2mysql [-] Rowcount 3\r\n"
+    ],
+    [
+      0.018057,
+      "2018-11-09 01:47:03.980 18452 INFO psql2mysql [-] Migrating table: 'sensitive_config'\r\n"
+    ],
+    [
+      0.002897,
+      "2018-11-09 01:47:03.983 18452 INFO psql2mysql [-] Migrating table: 'service'\r\n"
+    ],
+    [
+      0.002614,
+      "2018-11-09 01:47:03.986 18452 INFO psql2mysql [-] Rowcount 9\r\n"
+    ],
+    [
+      0.020543,
+      "2018-11-09 01:47:04.006 18452 INFO psql2mysql [-] Migrating table: 'service_provider'\r\n"
+    ],
+    [
+      0.003135,
+      "2018-11-09 01:47:04.009 18452 INFO psql2mysql [-] Migrating table: 'token'\r\n"
+    ],
+    [
+      0.004988,
+      "2018-11-09 01:47:04.013 18452 INFO psql2mysql [-] Migrating table: 'trust'\r\n"
+    ],
+    [
+      0.003725,
+      "2018-11-09 01:47:04.018 18452 INFO psql2mysql [-] Migrating table: 'trust_role'\r\n"
+    ],
+    [
+      0.001785,
+      "2018-11-09 01:47:04.020 18452 INFO psql2mysql [-] Migrating table: 'user'\r\n"
+    ],
+    [
+      0.002131,
+      "2018-11-09 01:47:04.022 18452 INFO psql2mysql [-] Rowcount 7\r\n"
+    ],
+    [
+      0.029246,
+      "2018-11-09 01:47:04.050 18452 INFO psql2mysql [-] Migrating table: 'whitelisted_config'\r\n"
+    ],
+    [
+      0.003472,
+      "2018-11-09 01:47:04.054 18452 INFO psql2mysql [-] Migrating table: 'access_token'\r\n"
+    ],
+    [
+      0.004025,
+      "2018-11-09 01:47:04.057 18452 INFO psql2mysql [-] Migrating table: 'endpoint'\r\n"
+    ],
+    [
+      0.002648,
+      "2018-11-09 01:47:04.061 18452 INFO psql2mysql [-] Rowcount 27\r\n"
+    ],
+    [
+      0.066464,
+      "2018-11-09 01:47:04.118 18452 INFO psql2mysql [-] Migrating table: 'federation_protocol'\r\n2018-11-09 01:47:04.120 18452 INFO psql2mysql [-] Migrating table: 'idp_remote_ids'\r\n2018-11-09 01:47:04.122 18452 INFO psql2mysql [-] Migrating table: 'implied_role'\r\n2018-11-09 01:47:04.123 18452 INFO psql2mysql [-] Migrating table: 'local_user'\r\n2018-11-09 01:47:04.125 18452 INFO psql2mysql [-] Rowcount 7\r\n"
+    ],
+    [
+      0.031342,
+      "2018-11-09 01:47:04.159 18452 INFO psql2mysql [-] Migrating table: 'nonlocal_user'\r\n"
+    ],
+    [
+      0.002447,
+      "2018-11-09 01:47:04.162 18452 INFO psql2mysql [-] Migrating table: 'project_endpoint_group'\r\n"
+    ],
+    [
+      0.002133,
+      "2018-11-09 01:47:04.164 18452 INFO psql2mysql [-] Migrating table: 'request_token'\r\n"
+    ],
+    [
+      0.002404,
+      "2018-11-09 01:47:04.166 18452 INFO psql2mysql [-] Migrating table: 'user_group_membership'\r\n"
+    ],
+    [
+      0.00569,
+      "2018-11-09 01:47:04.168 18452 INFO psql2mysql [-] Migrating table: 'federated_user'\r\n2018-11-09 01:47:04.170 18452 INFO psql2mysql [-] Migrating table: 'password'\r\n2018-11-09 01:47:04.171 18452 INFO psql2mysql [-] Rowcount 7\r\n"
+    ],
+    [
+      0.018442,
+      "Batch processing done.\r\n"
+    ],
+    [
+      0.052771,
+      "\u001b[01;35mroot\u001b[0m@\u001b[01;31md52-54-77-77-01-01\u001b[0m:\u001b[01;35m~\u001b[0m # "
+    ]
+  ],
+  "title": null,
+  "command": null,
+  "env": {
+    "TERM": "screen",
+    "SHELL": "/bin/bash"
+  },
+  "width": 80,
+  "duration": 35.904689
+}
