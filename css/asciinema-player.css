@@ -1881,7 +1881,7 @@
 }
 .asciinema-theme-asciinema .asciinema-terminal {
   color: #cccccc;
-  background-color: #121314;
+  background-color: #121314 !important;
   border-color: #121314;
 }
 .asciinema-theme-asciinema .fg-bg {
@@ -2447,7 +2447,7 @@
 /* Based on Monokai from base16 collection - https://github.com/chriskempson/base16 */
 .asciinema-theme-monokai .asciinema-terminal {
   color: #f8f8f2;
-  background-color: #272822;
+  background-color: #272822 !important;
   border-color: #272822;
 }
 .asciinema-theme-monokai .fg-bg {
