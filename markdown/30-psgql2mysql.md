@@ -1,5 +1,6 @@
-<!-- .slide: data-state="section-break" id="break-psql2mysql" data-timing="10s" -->
+<!-- .slide: data-state="normal" id="break-psql2mysql" data-timing="10s" -->
 # Let's write our own tool!
+<img class="full-slide" src="images/how-hard-can-it-be.jpg" />
 
 
 <!-- .slide: data-state="normal" id="p2m-goals" data-timing="20s" -->
