@@ -1,5 +1,6 @@
-<!-- .slide: data-state="section-break" id="break-psql2mysql" data-timing="10s" -->
+<!-- .slide: data-state="normal" id="break-psql2mysql" data-timing="10s" -->
 # Let's write our own tool!
+<img class="full-slide" src="images/how-hard-can-it-be.jpg" />
 
 
 <!-- .slide: data-state="normal" id="p2m-goals" data-timing="20s" -->
@@ -224,8 +225,15 @@ Note:
 
 
 
+<!-- .slide: data-state="normal" id="p2m-demo-batch" data-timing="20s" -->
+# Demo: Batching
+
+<asciinema-player id="player" cols="80" rows="16" speed="3" font-size="big" theme="solarized-dark" src="images/batch.cast"></asciinema-player>
+
+
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->
 # Converting into a module
+<img class="full-slide" src="images/1200px-ISS_Destiny_Lab.jpg" />
 
 Note:
 * A proof of concept script is great, but doesn't scale.

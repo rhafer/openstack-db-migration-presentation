@@ -50,13 +50,13 @@ Note:
 * PostgreSQL supports the full utf8 range by default
 * Many OpenStack projects are still hardcoding their schema to "utf8"
 * There is no good way to solve this issue programmatically
-  * trying to "convert" from "real" utf8 to mysql's 3byte encode would always
+  * trying to convert from "real" utf8 to mysql's 3byte encode would always
   mean data loss
-  * Any tool we use of the migration would need to be able to detect issues
-    and provider pointers on how to fix them
+  * Any tool we use for the migration would need to be able to detect issues
+    and provide pointers on how to fix them
 * Converting every OpenStack project to use "utf8mb4" is also not easy to
-  undertake. It was raised already in the past, but never really completed
-  It's also unsure what this means for existing deployments.
+  undertake. It has been raised in the past, but never really completed.
+  It's also unclear what this would entail for existing deployments.
 * Characters > 0xFFFF are unlikely to appear in OpenStack database but
   we need to be aware of it for the migration
 
