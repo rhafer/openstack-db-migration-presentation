@@ -3,6 +3,47 @@
 <img class="full-slide" src="images/how-hard-can-it-be.jpg" />
 
 
+<!-- .slide: data-state="normal" id="operations" data-timing="180s" -->
+# Operational thoughts
+
+### Incremental Sync
+* Run first DB conversion while the services are still online
+* take services offline
+* do another sync to just update/delete/add the rows changed since
+  the last sync
+* Switch services to new database
+
+### Onetime migration
+* Shutdown services
+* sync/copy directly from PostgreSQL to MySQL
+* reconfigure services and start
+* decommision PostgreSQL
+
+Note:
+* incremental:
+  * Pros:
+    * minimizes Downtime
+  * Cons:
+    * No standard way to find added, changed, deleted Objects since last sync
+      (might be possible via [https://wiki.postgresql.org/wiki/Audit_trigger])
+    * A lot more complex to implement (but there might be existing tools)
+* onetime:
+  * Pros:
+    * Probably the most straight-forward to implement
+  * Longer downtime
+  * Needs a live system with both databases running
+  * harder to do a "dry-run" test with production data
+* dump and reload:
+  * Pros
+    * Would more easily allows dry-runs and importing the data into some test setup outside the production env
+    * Doesn't need both DBs running during the migration
+  * Cons
+    * Most like needs the longest downtime.
+      As all data needs to written at least twice while all OpenStack services
+      are down
+    * What intermediate format to dump to?
+
+
 <!-- .slide: data-state="normal" id="p2m-goals" data-timing="20s" -->
 # Goals
 
