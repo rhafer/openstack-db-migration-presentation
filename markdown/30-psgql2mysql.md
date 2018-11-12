@@ -42,10 +42,12 @@ Note:
       As all data needs to written at least twice while all OpenStack services
       are down
     * What intermediate format to dump to?
+* We decided to go for the "onetime online migration" approach
+  * Good compromise. Pragmatic approach. Not too complex.
 
 
-<!-- .slide: data-state="normal" id="p2m-goals" data-timing="20s" -->
-# Goals
+<!-- .slide: data-state="normal" id="p2m-goals" data-timing="45s" -->
+# Other Goals
 
 <div style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between;">
 <div class="fragment" style="padding: 5px;">
@@ -70,7 +72,7 @@ Note:
   the user to problematic Rows/Values
 
 
-<!-- .slide: data-state="normal" id="p2m-intro" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-intro" data-timing="60s" -->
 # Introducing psql2mysql
 https://github.com/SUSE/psql2mysql
 
@@ -97,7 +99,7 @@ Note:
   * Usually better to run it locally on one of the cluster nodes
 
 
-<!-- .slide: data-state="normal" id="p2m-internals" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-internals" data-timing="120s" -->
 # SQLAlchemy for the win!
 * Introspection
 * Type Abstractions
@@ -123,7 +125,7 @@ SQLAlchemy provides some very useful features for our purposes
 ## ... and how we solved them
 
 
-<!-- .slide: data-state="normal" id="p2m-issues-fk" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-issues-fk" data-timing="120s" -->
 # Foreign keys and other constraints
 
 Migrating table by table without a certain order will give you this:
@@ -154,7 +156,7 @@ Note:
 * When the migration is done the database should be fully consistent again
 
 
-<!-- .slide: data-state="normal" id="p2m-issues-galera" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-issues-galera" data-timing="90s" -->
 # Galera and huge transactions
 
 Once the tables to migrate get a certain size you'll see this when using a
@@ -182,7 +184,7 @@ Note:
 * Sidenote: This limits also can get issue with the ceilometer-expirer job
 
 
-<!-- .slide: data-state="normal" id="p2m-issues-mem" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-issues-mem" data-timing="120s" -->
 # Memory usage and runtime
 
 <img class="full-slide fragment" src="images/memory-vs-chunksize-vs-runtime.svg"/>
@@ -205,17 +207,17 @@ Note:
 * Sweet spot seems to be at 10000
 
 
-<!-- .slide: data-state="normal" id="p2m-issues-mem1" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-issues-mem1" data-timing="45s" -->
 # Memory usage
 <img class="full-slide" src="images/memory-vs-chunksize.svg">
 
 
-<!-- .slide: data-state="normal" id="p2m-issues-mem2" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-issues-mem2" data-timing="45s" -->
 # Runtime
 <img class="full-slide" src="images/runtime-vs-chunksize.svg">
 
 
-<!-- .slide: data-state="normal" id="p2m-issues-ceilometer" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-issues-ceilometer" data-timing="120s" -->
 # Type incompatibilities in Ceilometer
 
 ```clean
@@ -255,21 +257,21 @@ Note:
   TypeDecorator is installed and values will be converted on the fly
 
 
-<!-- .slide: data-state="section-break" id="p2m-demo" data-timing="20s" -->
+<!-- .slide: data-state="section-break" id="p2m-demo" data-timing="10s" -->
 # Demo Time
 
 
-<!-- .slide: data-state="normal" id="p2m-demo-precheck" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-demo-precheck" data-timing="45s" -->
 # Demo: Precheck Failure
 
 <asciinema-player id="player" cols="81" rows="16" speed="3" font-size="big" theme="tango" src="images/precheck-failure.cast"></asciinema-player>
 
 
-<!-- .slide: data-state="normal" class="full-screen" id="p2m-demo-neutron" data-timing="20s" -->
+<!-- .slide: data-state="normal" class="full-screen" id="p2m-demo-neutron" data-timing="180s" -->
 <asciinema-player id="player" cols="111" rows="32" speed="3" font-size="medium" theme="tango" src="images/neutron.cast"/>
 
 
-<!-- .slide: data-state="normal" id="p2m-demo-batch" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="p2m-demo-batch" data-timing="90s" -->
 # Demo: Batching
 
 <asciinema-player id="player" cols="95" rows="18" speed="2" font-size="big" theme="tango" src="images/batch.cast"></asciinema-player>

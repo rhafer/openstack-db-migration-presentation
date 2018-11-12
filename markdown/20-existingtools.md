@@ -30,7 +30,7 @@ Nice to have:
 * incremental sync
 
 
-<!-- .slide: data-state="normal" id="pg2mysql" data-timing="120s" data-menu-title="pg2mysql" -->
+<!-- .slide: data-state="normal" id="pg2mysql" data-timing="180s" data-menu-title="pg2mysql" -->
 # Exiting tools
 
 * pg2mysql (https://github.com/pivotal-cf/pg2mysql) 
