@@ -3,7 +3,7 @@
 <img class="full-slide" src="images/how-hard-can-it-be.jpg" />
 
 
-<!-- .slide: data-state="normal" id="dump-reload" data-timing="20s" data-menu-title="dump-reload" -->
+<!-- .slide: data-state="normal" id="dump-reload" data-timing="10s" -->
 # It's all just SQL!
 
 <code style="font-size: 5rem; display: block; margin: 15%">
@@ -11,7 +11,12 @@
 </code>
 
 
-<!-- .slide: data-state="normal" id="sql-diff" data-timing="20s" data-menu-title="sql-diff" -->
+Note:
+* Let's just all Postgres data to SQL and reload it using mysql
+* Unfortunately it's not that easy
+
+
+<!-- .slide: data-state="normal" id="sql-diff" data-timing="90s" -->
 # ... or why a simple dump and reload won't work
 
 * Syntax differences
@@ -22,12 +27,15 @@
   * BOOLEAN vs TINYINT
 
 Note:
+* SQL is not fully standardized
+* Just to list a few differences that affect OpenStack to some extend at
+  least
 * "TEXT" is used for quite a few collumns in OpenStack
   * Mainly "description" and similar columns
 
 
-<!-- .slide: data-state="normal" id="openstack-diff" data-timing="20s" data-menu-title="openstack-diff" -->
-# Backend specific differences in OpenStack
+<!-- .slide: data-state="normal" id="openstack-diff" data-timing="120s"  -->
+# Other differences (default charsets)
 ### Have you ever tried this:
 
   `openstack volume create --size 1 "My ` &#x1F4BE;`"`
@@ -39,6 +47,8 @@ Note:
 <!-- .element: class="fragment emoji-cast" -->
 
 Note:
+* Many OpenStack projects still default to the "UTF8" charset when using
+  mysql. Especially as of OpenStack Newton.
 * UTF8 in MySQL is not real UTF8
   * It's limited to 3 Byte UTF-8 characters
   * that reflects Unicode Codepoint 0x0000 to 0xFFFF (Basic Multilingual
@@ -46,9 +56,8 @@ Note:
   * It covers most commonly used characters
   * But misses Emojis, Mathematical Symbols and some less often used CJK
     characters
-* If the full range is needed with MySQL you need to use "utf8mb4"
 * PostgreSQL supports the full utf8 range by default
-* Many OpenStack projects are still hardcoding their schema to "utf8"
+* In MySQL for full "UTF8" support the "utf8mb4" charset needs to be used
 * There is no good way to solve this issue programmatically
   * trying to convert from "real" utf8 to mysql's 3byte encode would always
   mean data loss
@@ -57,11 +66,11 @@ Note:
 * Converting every OpenStack project to use "utf8mb4" is also not easy to
   undertake. It has been raised in the past, but never really completed.
   It's also unclear what this would entail for existing deployments.
-* Characters > 0xFFFF are unlikely to appear in OpenStack database but
+* Luckily Characters > 0xFFFF are unlikely to appear in OpenStack database but
   we need to be aware of it for the migration
 
 
-<!-- .slide: data-state="normal" id="openstack-diff-2" data-timing="20s" -->
+<!-- .slide: data-state="normal" id="openstack-diff-2" data-timing="45s" -->
 # Backend specific differences in OpenStack
 ### some projects use slightly different schemas depending on database backend
 
@@ -70,8 +79,13 @@ Note:
   * DECIMAL+sqlalchemy magic in MySQL
   * TIMESTAMP in PostgreSQL
 
+Note:
+* to workaround limits of older MySQL release ceilometer decided to "emulate"
+  high precision timestamps by using "DECIMAL".
+* for PostgreSQL is using the available TimeStamp type
 
-<!-- .slide: data-state="normal" id="operations" data-timing="20s" -->
+
+<!-- .slide: data-state="normal" id="operations" data-timing="180s" -->
 # Operational thoughts
 
 ### Incremental Sync
@@ -117,7 +131,7 @@ Note:
 ## What about existing tools?
 
 
-<!-- .slide: data-state="normal" id="requirements" data-timing="20s" data-menu-title="requirements" -->
+<!-- .slide: data-state="normal" id="requirements" data-timing="180s" data-menu-title="requirements" -->
 # Requirements
 
 ### And other things that are nice to have

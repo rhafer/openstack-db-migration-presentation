@@ -1,4 +1,4 @@
-<!-- .slide: data-state="cover" id="cover-page" data-menu-title="Cover slide" data-timing="0" -->
+<!-- .slide: data-state="cover" id="cover-page" data-menu-title="Cover slide" data-timing="20" -->
 <div class="title">
     <h1>Moving your OpenStack cloud from PostgreSQL to MariaDB</h1>
     <h3 style="margin-top: 3rem;">
