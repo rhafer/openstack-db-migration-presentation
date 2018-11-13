@@ -316,6 +316,7 @@ Note:
 
 <!-- .slide: data-state="normal" id="p2m-improve" data-timing="20s" -->
 # Possible Improvements
+<img class="full-slide" src="images/archery-bullseye-family-camping-olympic-target-size.jpg" />
 
 Note:
 * parallelization
