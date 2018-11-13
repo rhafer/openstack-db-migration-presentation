@@ -264,7 +264,7 @@ Note:
 <!-- .slide: data-state="normal" id="p2m-demo-precheck" data-timing="45s" -->
 # Demo: Precheck Failure
 
-<asciinema-player id="player" cols="81" rows="16" speed="3" font-size="big" theme="tango" src="images/precheck-failure.cast"></asciinema-player>
+<asciinema-player id="player" cols="80" rows="16" speed="3" font-size="big" theme="tango" src="images/precheck-failure.cast"></asciinema-player>
 
 
 <!-- .slide: data-state="normal" class="full-screen" id="p2m-demo-neutron" data-timing="180s" -->
@@ -316,6 +316,7 @@ Note:
 
 <!-- .slide: data-state="normal" id="p2m-improve" data-timing="20s" -->
 # Possible Improvements
+<img class="full-slide" src="images/archery-bullseye-family-camping-olympic-target-size.jpg" />
 
 Note:
 * parallelization
