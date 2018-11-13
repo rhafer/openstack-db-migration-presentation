@@ -38,7 +38,7 @@ Note:
 </code>
 
 Note:
-* Let's just all Postgres data to SQL and reload it using mysql
+* Let's just dump all Postgres data to SQL and import it using mysql
 * Unfortunately it's not that easy
 
 
