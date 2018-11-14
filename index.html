@@ -62,23 +62,5 @@
     <script src="js/qrcode.js"></script>
 
     <script src="js/asciinema-player.js"></script>
-
-    <script>
-      // autoplay asciinema cast
-      Reveal.addEventListener('fragmentshown', function(event) {
-          if (event.fragment.classList.contains('emoji-cast')) {
-              document.getElementsByClassName('emoji-cast')[0].play();
-          }
-          if (event.fragment.classList.contains('precheck-cast')) {
-              document.getElementsByClassName('precheck-cast')[0].play();
-          }
-          if (event.fragment.classList.contains('neutron-cast')) {
-              document.getElementsByClassName('neutron-cast')[0].play();
-          }
-          if (event.fragment.classList.contains('batch-cast')) {
-              document.getElementsByClassName('batch-cast')[0].play();
-          }
-      });
-    </script>
 </body>
 </html>

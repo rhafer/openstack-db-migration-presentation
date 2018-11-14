@@ -264,17 +264,17 @@ Note:
 <!-- .slide: data-state="normal" id="p2m-demo-precheck" data-timing="45s" -->
 # Demo: Precheck Failure
 
-<asciinema-player id="player" cols="80" rows="16" speed="3" font-size="big" theme="tango" class="fragment precheck-cast" src="images/precheck-failure.cast"></asciinema-player>
+<asciinema-player id="player" cols="80" rows="16" speed="3" font-size="big" theme="tango" class="fragment precheck-cast asciinema-player" src="images/precheck-failure.cast"></asciinema-player>
 
 
 <!-- .slide: data-state="normal" class="full-screen" id="p2m-demo-neutron" data-timing="180s" -->
-<asciinema-player id="player" cols="111" rows="32" speed="3" font-size="medium" theme="tango" class="fragment neutron-cast" src="images/neutron.cast"/>
+<asciinema-player id="player" cols="111" rows="32" speed="3" font-size="medium" theme="tango" class="fragment neutron-cast asciinema-player" src="images/neutron.cast"/>
 
 
 <!-- .slide: data-state="normal" id="p2m-demo-batch" data-timing="90s" -->
 # Demo: Batching
 
-<asciinema-player id="player" cols="95" rows="18" speed="2" font-size="big" theme="tango" class="fragment batch-cast" src="images/batch.cast"></asciinema-player>
+<asciinema-player id="player" cols="95" rows="18" speed="2" font-size="big" theme="tango" class="fragment batch-cast asciinema-player" src="images/batch.cast"></asciinema-player>
 
 
 <!-- .slide: data-state="normal" id="p2m-devel" data-timing="20s" -->

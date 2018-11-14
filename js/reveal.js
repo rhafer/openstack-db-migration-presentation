@@ -42,9 +42,18 @@ Reveal.initialize({
 
 Reveal.configure({
     keyboard: {
+        // Backspace should pause the current asciinema player
+        8: function() {
+            var player = document.getElementsByClassName("asciinema-player current-fragment")[0];
+            player.pause();
+        },
         13: 'next', // go to the next slide when the ENTER key is pressed
         27: function() {}, // do something custom when ESC is pressed
-        32: null, // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+        // Space should play the current asciinema player
+        32: function() {
+            var player = document.getElementsByClassName("asciinema-player current-fragment")[0];
+            player.play();
+        },
         // Make 'C' toggle controls
         67: function() {
             Reveal.configure({ controls: ! Reveal.getConfig()['controls'] });
