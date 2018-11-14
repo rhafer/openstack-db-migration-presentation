@@ -62,14 +62,5 @@
     <script src="js/qrcode.js"></script>
 
     <script src="js/asciinema-player.js"></script>
-
-    <script>
-      // autoplay asciinema cast
-      Reveal.addEventListener('fragmentshown', function(event) {
-          if (event.fragment.classList.contains('emoji-cast')) {
-              document.getElementById('player').play();
-          }
-      });
-    </script>
 </body>
 </html>

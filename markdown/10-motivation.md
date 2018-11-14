@@ -70,7 +70,7 @@ Note:
 * But with MySQL:<!-- .element: class="fragment" -->
 
 <asciinema-player id="player" cols="80" rows="6" speed="3" font-size="big" theme="tango" src="images/emoji.cast"></asciinema-player>
-<!-- .element: class="fragment emoji-cast" -->
+<!-- .element: class="fragment emoji-cast asciinema-player" -->
 
 Note:
 * Many OpenStack projects still default to the "UTF8" charset when using
