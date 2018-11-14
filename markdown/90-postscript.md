@@ -8,8 +8,7 @@
 
 * https://jobs.suse.com/
 
-<img data-src="images/SUSE/SUSE-logo-white.png"
-     alt="SUSE&reg; logo" />
+<img data-src="images/SUSE/SUSE-logo.svg" alt="SUSE&reg; logo" />
 
 
 <!-- .slide: data-menu-title="Disclaimers" id="disclaimers" data-state="green-bg" -->
